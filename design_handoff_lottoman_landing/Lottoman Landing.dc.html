@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: 'Inter', system-ui, sans-serif; color: #14122E; background: #F7F7FB; }
+  a { color: #6D28D9; text-decoration: none; }
+  a:hover { color: #FF2D78; }
+  @keyframes float { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-22px) rotate(8deg); } }
+  @keyframes pulseCta { 0%,100% { box-shadow: 0 12px 30px rgba(255,45,120,.45); } 50% { box-shadow: 0 12px 44px rgba(255,45,120,.75); } }
+  @keyframes sheen { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+  @keyframes sparkle { 0%,100% { opacity:.3; transform: scale(.7); } 50% { opacity:1; transform: scale(1); } }
+  [data-nav-links] { display: none; }
+  @media (min-width: 940px) { [data-nav-links] { display: flex !important; } }
+  @media (max-width: 880px) {
+    [data-hero-grid], [data-calc-grid], [data-dl-grid] { grid-template-columns: 1fr !important; }
+    [data-foot-grid] { grid-template-columns: 1fr 1fr !important; }
+  }
+  @media (max-width: 540px) {
+    [data-stats-grid], [data-foot-grid] { grid-template-columns: 1fr !important; }
+  }
+</style>
+</helmet>
+<div style="background:#F7F7FB;overflow-x:hidden;">
+
+  <nav style="position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px clamp(18px,5vw,60px);background:rgba(30,27,75,.82);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.08);">
+    <a href="#top" style="display:flex;align-items:center;gap:11px;color:#fff;">
+      <span style="width:38px;height:38px;border-radius:50%;background:radial-gradient(circle at 32% 28%, #FFE08A, #FFB800);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:700;color:#1E1B4B;box-shadow:0 6px 18px rgba(255,184,0,.5);">90</span>
+      <span style="font-family:'Sora',sans-serif;font-weight:800;font-size:22px;letter-spacing:-.5px;">Lottoman</span>
+    </a>
+    <div style="gap:26px;align-items:center;" data-nav-links>
+      <a href="#games" style="color:#CFC9F2;font-weight:500;font-size:15px;">Games</a>
+      <a href="#results" style="color:#CFC9F2;font-weight:500;font-size:15px;">Results</a>
+      <a href="#how" style="color:#CFC9F2;font-weight:500;font-size:15px;">How to Play</a>
+      <a href="#calculator" style="color:#CFC9F2;font-weight:500;font-size:15px;">Win Calculator</a>
+      <a href="#footer" style="color:#CFC9F2;font-weight:500;font-size:15px;">Support</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <a href="#calculator" style="padding:10px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.28);color:#fff;font-weight:600;font-size:14px;">Log In</a>
+      <a href="#calculator" style="padding:10px 18px;border-radius:999px;background:#FF2D78;color:#fff;font-weight:700;font-size:14px;box-shadow:0 8px 22px rgba(255,45,120,.45);">Sign Up</a>
+    </div>
+  </nav>
+
+  <header id="top" style="position:relative;background:radial-gradient(1200px 700px at 78% -10%, rgba(255,45,120,.42), transparent 60%), radial-gradient(900px 600px at 12% 20%, rgba(109,40,217,.55), transparent 60%), linear-gradient(160deg, #1E1B4B, #2A2266 60%, #1E1B4B);color:#fff;padding:clamp(48px,8vw,96px) clamp(18px,5vw,60px) clamp(64px,9vw,120px);overflow:hidden;">
+    <div style="position:absolute;inset:0;overflow:hidden;">{{ heroBalls }}</div>
+    <div style="position:relative;z-index:1;max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,4vw,56px);align-items:center;" data-hero-grid>
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;background:rgba(255,184,0,.14);border:1px solid rgba(255,184,0,.35);color:#FFB800;font-weight:600;font-size:13px;margin-bottom:22px;">
+          <span style="width:7px;height:7px;border-radius:50%;background:#12E0B8;box-shadow:0 0 10px #12E0B8;"></span>
+          Licensed NLA 5/90 Agent
+        </div>
+        <h1 style="font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(38px,6vw,68px);line-height:1.02;letter-spacing:-1.5px;margin:0 0 16px;">Ghana's lucky number is <span style="background:linear-gradient(100deg,#FFB800,#FF2D78);-webkit-background-clip:text;background-clip:text;color:transparent;">Lottoman</span>.</h1>
+        <p style="font-size:clamp(16px,1.6vw,20px);line-height:1.5;color:#CFC9F2;margin:0 0 30px;max-width:520px;">Seven daily 5/90 draws. Pick your numbers, fund with mobile money, and play in seconds — winning is one tap away.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:14px;margin-bottom:18px;">
+          <a href="#games" style="padding:16px 30px;border-radius:999px;background:#FF2D78;color:#fff;font-weight:700;font-size:17px;animation:pulseCta 2.6s ease-in-out infinite;">Play Now</a>
+          <a href="#download" style="padding:16px 28px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.28);color:#fff;font-weight:600;font-size:17px;">Download the App</a>
+        </div>
+        <p style="font-size:13px;color:#9990D6;margin:0;">18+ only · Play responsibly · Winning is never guaranteed.</p>
+      </div>
+
+      <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:26px;padding:28px;backdrop-filter:blur(10px);box-shadow:0 30px 70px rgba(0,0,0,.35);">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+          <span style="font-size:13px;font-weight:600;color:#9990D6;text-transform:uppercase;letter-spacing:1px;">Next draw</span>
+          <span style="font-size:13px;font-weight:600;color:#12E0B8;">7:30 PM</span>
+        </div>
+        <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:24px;margin-bottom:18px;">{{ heroDrawName }}</div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center;">
+          <div style="background:rgba(30,27,75,.55);border-radius:14px;padding:14px 6px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:30px;color:#FFB800;font-variant-numeric:tabular-nums;">{{ heroCd.d }}</div>
+            <div style="font-size:11px;color:#9990D6;letter-spacing:1px;">DAYS</div>
+          </div>
+          <div style="background:rgba(30,27,75,.55);border-radius:14px;padding:14px 6px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:30px;color:#FFB800;font-variant-numeric:tabular-nums;">{{ heroCd.h }}</div>
+            <div style="font-size:11px;color:#9990D6;letter-spacing:1px;">HRS</div>
+          </div>
+          <div style="background:rgba(30,27,75,.55);border-radius:14px;padding:14px 6px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:30px;color:#FFB800;font-variant-numeric:tabular-nums;">{{ heroCd.m }}</div>
+            <div style="font-size:11px;color:#9990D6;letter-spacing:1px;">MIN</div>
+          </div>
+          <div style="background:rgba(30,27,75,.55);border-radius:14px;padding:14px 6px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:30px;color:#FF2D78;font-variant-numeric:tabular-nums;">{{ heroCd.s }}</div>
+            <div style="font-size:11px;color:#9990D6;letter-spacing:1px;">SEC</div>
+          </div>
+        </div>
+        <div style="margin-top:16px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:13px;color:#CFC9F2;">
+          <span style="padding:4px 10px;border-radius:999px;background:rgba(18,224,184,.14);color:#12E0B8;font-weight:600;">5 from 1–90</span>
+          <span>Draws every night</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div style="background:#14122E;color:#CFC9F2;padding:16px clamp(18px,5vw,60px);">
+    <div style="max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px 32px;font-size:14px;font-weight:500;">
+      <span style="display:inline-flex;align-items:center;gap:9px;"><span style="width:26px;height:30px;background:linear-gradient(#FFB800,#E09E00);clip-path:polygon(50% 0,100% 18%,100% 62%,50% 100%,0 62%,0 18%);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;color:#1E1B4B;">NLA</span>Licensed NLA 5/90 Agent</span>
+      <span style="width:1px;height:16px;background:rgba(255,255,255,.15);"></span>
+      <span style="display:inline-flex;align-items:center;gap:9px;"><span style="width:26px;height:26px;border-radius:50%;background:#FF2D78;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#fff;">18+</span>Strictly 18 and over</span>
+      <span style="width:1px;height:16px;background:rgba(255,255,255,.15);"></span>
+      <span style="display:inline-flex;align-items:center;gap:9px;"><span style="width:9px;height:9px;border-radius:50%;background:#16A34A;box-shadow:0 0 10px #16A34A;"></span>Play Responsibly</span>
+    </div>
+  </div>
+
+  <section id="games" style="max-width:1180px;margin:0 auto;padding:clamp(56px,8vw,96px) clamp(18px,5vw,60px);">
+    <div style="text-align:center;margin-bottom:44px;">
+      <div style="font-size:13px;font-weight:700;letter-spacing:2px;color:#6D28D9;text-transform:uppercase;margin-bottom:10px;">The Weekly Cycle</div>
+      <h2 style="font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(28px,4vw,44px);letter-spacing:-1px;margin:0 0 12px;">Seven daily 5/90 draws</h2>
+      <p style="color:#5B5580;font-size:17px;max-width:560px;margin:0 auto;">A branded draw every night at 7:30 PM. Pick your numbers, choose your bet, and play any of them.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;">
+      <sc-for list="{{ games }}" as="g" hint-placeholder-count="7">
+        <div style="position:relative;border-radius:22px;overflow:hidden;background:#fff;border:1px solid #ECEAF6;box-shadow:0 14px 34px rgba(30,27,75,.08);display:flex;flex-direction:column;" style-hover="transform:translateY(-6px);box-shadow:0 24px 50px rgba(30,27,75,.18);transition:all .25s ease;">
+          <div style="background:linear-gradient(135deg, {{ g.g1 }}, {{ g.g2 }});padding:22px 22px 26px;color:#fff;position:relative;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+              <span style="padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.22);font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;">{{ g.day }}</span>
+              <span style="font-size:12px;font-weight:600;opacity:.85;">7:30 PM</span>
+            </div>
+            <div style="font-family:'Sora',sans-serif;font-weight:800;font-size:26px;line-height:1.05;letter-spacing:-.5px;">{{ g.name }}</div>
+            <div style="font-size:13px;opacity:.9;margin-top:6px;">{{ g.tag }}</div>
+          </div>
+          <div style="padding:20px 22px 22px;display:flex;flex-direction:column;gap:16px;flex:1;">
+            <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:#5B5580;">
+              <span style="padding:4px 10px;border-radius:999px;background:#F1EEFB;color:#6D28D9;font-weight:700;font-family:'JetBrains Mono',monospace;">5 / 90</span>
+              <span>Match 5 from 1–90</span>
+            </div>
+            <div style="background:#F7F7FB;border:1px solid #ECEAF6;border-radius:14px;padding:12px 14px;">
+              <div style="font-size:12px;color:#5B5580;margin-bottom:8px;">Next draw closes in</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:20px;color:#14122E;font-variant-numeric:tabular-nums;letter-spacing:1px;">{{ g.cd.d }}d {{ g.cd.h }}:{{ g.cd.m }}:{{ g.cd.s }}</div>
+            </div>
+            <div style="display:flex;align-items:baseline;gap:8px;">
+              <span style="font-size:13px;color:#5B5580;">Direct 5 pays up to</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:19px;color:#B78600;">×44,000</span>
+            </div>
+            <div style="margin-top:auto;display:flex;gap:10px;">
+              <a href="#calculator" style="flex:1;text-align:center;padding:13px;border-radius:12px;background:#FF2D78;color:#fff;font-weight:700;font-size:15px;">Play</a>
+              <a href="#calculator" style="padding:13px 16px;border-radius:12px;background:#F1EEFB;color:#6D28D9;font-weight:600;font-size:15px;">Details</a>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="calculator" style="background:linear-gradient(160deg,#1E1B4B,#2A2266);color:#fff;padding:clamp(56px,8vw,96px) clamp(18px,5vw,60px);">
+    <div style="max-width:1080px;margin:0 auto;">
+      <div style="text-align:center;margin-bottom:40px;">
+        <div style="font-size:13px;font-weight:700;letter-spacing:2px;color:#FFB800;text-transform:uppercase;margin-bottom:10px;">Win Calculator</div>
+        <h2 style="font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(28px,4vw,44px);letter-spacing:-1px;margin:0 0 12px;">See what a stake could return</h2>
+        <p style="color:#CFC9F2;font-size:17px;max-width:560px;margin:0 auto;">Pick a bet type and stake — no login needed. Figures are indicative.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:stretch;" data-calc-grid>
+        <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:24px;padding:28px;">
+          <div style="font-size:13px;font-weight:600;color:#9990D6;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">Bet type</div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:24px;">
+            <sc-for list="{{ betTypes }}" as="bt" hint-placeholder-count="6">
+              <button onClick="{{ bt.onClick }}" style="{{ bt.style }}">{{ bt.label }}</button>
+            </sc-for>
+          </div>
+          <sc-if value="{{ isPerm }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-bottom:24px;">
+              <div style="font-size:13px;font-weight:600;color:#9990D6;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">Numbers to perm</div>
+              <div style="display:flex;gap:9px;">
+                <sc-for list="{{ permOptions }}" as="p" hint-placeholder-count="4">
+                  <button onClick="{{ p.onClick }}" style="{{ p.style }}">{{ p.label }}</button>
+                </sc-for>
+              </div>
+            </div>
+          </sc-if>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+            <span style="font-size:13px;font-weight:600;color:#9990D6;text-transform:uppercase;letter-spacing:1px;">Your stake</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:20px;color:#12E0B8;">GHS {{ stake }}</span>
+          </div>
+          <input type="range" min="1" max="200" value="{{ stake }}" onInput="{{ onStake }}" style="width:100%;accent-color:#FF2D78;height:6px;cursor:pointer;">
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:#9990D6;margin-top:8px;font-family:'JetBrains Mono',monospace;">
+            <span>GHS 1 min</span><span>GHS 200 max</span>
+          </div>
+        </div>
+
+        <div style="background:radial-gradient(500px 300px at 70% -10%, rgba(255,184,0,.25), transparent 60%), rgba(30,27,75,.6);border:1px solid rgba(255,184,0,.3);border-radius:24px;padding:32px;display:flex;flex-direction:column;justify-content:center;text-align:center;">
+          <div style="font-size:13px;font-weight:600;color:#9990D6;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Potential win</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:clamp(38px,6vw,60px);line-height:1;color:#FFB800;font-variant-numeric:tabular-nums;text-shadow:0 8px 30px rgba(255,184,0,.35);">{{ payoutDisplay }}</div>
+          <div style="margin-top:16px;font-size:14px;color:#CFC9F2;line-height:1.5;">{{ calcSub }}</div>
+          <div style="margin-top:20px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);font-size:12px;color:#9990D6;line-height:1.5;">Indicative multipliers, pending official NLA payout confirmation. Not a guarantee of winnings.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" style="max-width:1080px;margin:0 auto;padding:clamp(56px,8vw,96px) clamp(18px,5vw,60px);">
+    <div style="text-align:center;margin-bottom:44px;">
+      <div style="font-size:13px;font-weight:700;letter-spacing:2px;color:#6D28D9;text-transform:uppercase;margin-bottom:10px;">How it works</div>
+      <h2 style="font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(28px,4vw,44px);letter-spacing:-1px;margin:0;">Three taps to your first ticket</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="3">
+        <div style="background:#fff;border:1px solid #ECEAF6;border-radius:22px;padding:30px;box-shadow:0 14px 34px rgba(30,27,75,.06);">
+          <div style="width:52px;height:52px;border-radius:16px;background:{{ s.bg }};display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:800;font-size:22px;color:#fff;margin-bottom:20px;">{{ s.n }}</div>
+          <h3 style="font-family:'Sora',sans-serif;font-weight:700;font-size:20px;margin:0 0 10px;">{{ s.title }}</h3>
+          <p style="color:#5B5580;font-size:15px;line-height:1.55;margin:0;">{{ s.body }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="results" style="background:#14122E;color:#fff;padding:clamp(56px,8vw,96px) clamp(18px,5vw,60px);">
+    <div style="max-width:1080px;margin:0 auto;">
+      <div style="display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px;margin-bottom:36px;">
+        <div>
+          <div style="font-size:13px;font-weight:700;letter-spacing:2px;color:#12E0B8;text-transform:uppercase;margin-bottom:10px;">Latest Results</div>
+          <h2 style="font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(28px,4vw,42px);letter-spacing:-1px;margin:0;">Recent winning numbers</h2>
+        </div>
+        <a href="#results" style="color:#12E0B8;font-weight:600;font-size:15px;">View all results →</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <sc-for list="{{ results }}" as="r" hint-placeholder-count="5">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:16px 20px;">
+            <div>
+              <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:17px;">{{ r.game }}</div>
+              <div style="font-size:13px;color:#9990D6;font-family:'JetBrains Mono',monospace;">{{ r.date }}</div>
+            </div>
+            <div style="display:flex;gap:9px;">
+              <sc-for list="{{ r.nums }}" as="n" hint-placeholder-count="5">
+                <span style="width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 32% 28%, #FFE08A, #FFB800);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:16px;color:#1E1B4B;box-shadow:0 6px 14px rgba(255,184,0,.3);">{{ n }}</span>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="download" style="max-width:1180px;margin:0 auto;padding:clamp(56px,8vw,96px) clamp(18px,5vw,60px);">
+    <div style="background:linear-gradient(150deg,#6D28D9,#1E1B4B);border-radius:32px;padding:clamp(32px,5vw,60px);color:#fff;display:grid;grid-template-columns:1fr .85fr;gap:clamp(28px,5vw,60px);align-items:center;position:relative;overflow:hidden;" data-dl-grid>
+      <div style="position:relative;z-index:1;">
+        <div style="font-size:13px;font-weight:700;letter-spacing:2px;color:#FFB800;text-transform:uppercase;margin-bottom:14px;">The Lottoman App</div>
+        <h2 style="font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(28px,4vw,44px);letter-spacing:-1px;line-height:1.05;margin:0 0 18px;">Play from your pocket, day or night</h2>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:28px;">
+          <sc-for list="{{ appBenefits }}" as="b" hint-placeholder-count="3">
+            <div style="display:flex;align-items:center;gap:12px;font-size:16px;color:#E7E3FA;">
+              <span style="width:26px;height:26px;border-radius:50%;background:#12E0B8;display:flex;align-items:center;justify-content:center;color:#0B3B32;font-weight:800;font-size:14px;flex-shrink:0;">✓</span>
+              {{ b }}
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px;">
+          <a href="#download" style="display:flex;align-items:center;gap:11px;padding:12px 20px;border-radius:14px;background:#000;color:#fff;">
+            <span style="width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,#444,#111);"></span>
+            <span style="line-height:1.1;"><span style="font-size:11px;opacity:.75;">Download on the</span><br><span style="font-family:'Sora',sans-serif;font-weight:700;font-size:17px;">App Store</span></span>
+          </a>
+          <a href="#download" style="display:flex;align-items:center;gap:11px;padding:12px 20px;border-radius:14px;background:#000;color:#fff;">
+            <span style="width:26px;height:26px;border-radius:7px;background:conic-gradient(from 45deg,#12E0B8,#FFB800,#FF2D78,#6D28D9,#12E0B8);"></span>
+            <span style="line-height:1.1;"><span style="font-size:11px;opacity:.75;">GET IT ON</span><br><span style="font-family:'Sora',sans-serif;font-weight:700;font-size:17px;">Google Play</span></span>
+          </a>
+          <div style="text-align:center;">
+            <div style="width:76px;height:76px;border-radius:12px;background:repeating-linear-gradient(45deg,#1E1B4B 0 6px,#2A2266 6px 12px);border:3px solid #fff;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:9px;color:#FFB800;text-align:center;line-height:1.2;">QR<br>CODE</div>
+            <div style="font-size:11px;color:#CFC9F2;margin-top:6px;">Scan to install</div>
+          </div>
+        </div>
+      </div>
+      <div style="position:relative;z-index:1;display:flex;justify-content:center;">
+        <div style="width:236px;height:480px;border-radius:38px;background:#0E0C24;border:9px solid #060517;box-shadow:0 40px 80px rgba(0,0,0,.5);padding:14px 12px;display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:2px 6px;font-size:11px;color:#9990D6;font-family:'JetBrains Mono',monospace;">
+            <span>9:41</span><span>Lottoman</span>
+          </div>
+          <div style="background:linear-gradient(135deg,#6D28D9,#FF2D78);border-radius:18px;padding:16px;color:#fff;">
+            <div style="font-size:11px;opacity:.85;">Wallet balance</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:26px;">GHS 45.00</div>
+            <div style="margin-top:10px;padding:8px;border-radius:10px;background:rgba(255,255,255,.2);text-align:center;font-size:12px;font-weight:700;">Fund with Mobile Money</div>
+          </div>
+          <div style="background:rgba(255,255,255,.06);border-radius:16px;padding:14px;color:#fff;flex:1;">
+            <div style="font-size:12px;color:#9990D6;margin-bottom:10px;">Quick play · Fortune Thursday</div>
+            <div style="display:flex;flex-wrap:wrap;gap:7px;">
+              <span style="width:34px;height:34px;border-radius:50%;background:#FFB800;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px;color:#1E1B4B;">12</span>
+              <span style="width:34px;height:34px;border-radius:50%;background:#FFB800;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px;color:#1E1B4B;">45</span>
+              <span style="width:34px;height:34px;border-radius:50%;background:#FFB800;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px;color:#1E1B4B;">63</span>
+              <span style="width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;font-size:16px;color:#12E0B8;">+</span>
+              <span style="width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;font-size:16px;color:#12E0B8;">+</span>
+            </div>
+            <div style="margin-top:14px;padding:11px;border-radius:12px;background:#FF2D78;text-align:center;font-weight:700;font-size:14px;">Confirm ticket</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:linear-gradient(160deg,#1E1B4B,#2A2266);color:#fff;padding:clamp(48px,7vw,80px) clamp(18px,5vw,60px);">
+    <div style="max-width:1080px;margin:0 auto;">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px;text-align:center;" data-stats-grid>
+        <sc-for list="{{ stats }}" as="st" hint-placeholder-count="3">
+          <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:24px 16px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:clamp(26px,3.4vw,38px);color:#FFB800;font-variant-numeric:tabular-nums;">{{ st.v }}</div>
+            <div style="font-size:13px;color:#9990D6;margin-top:6px;">{{ st.l }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <h3 style="font-family:'Sora',sans-serif;font-weight:700;font-size:22px;text-align:center;margin:0 0 24px;">Recent winners across Ghana</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;">
+        <sc-for list="{{ winners }}" as="w" hint-placeholder-count="4">
+          <div style="background:rgba(255,255,255,.05);border:1px solid rgba(18,224,184,.2);border-radius:16px;padding:18px;display:flex;align-items:center;gap:14px;">
+            <div style="width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#6D28D9,#FF2D78);display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:700;font-size:14px;flex-shrink:0;">{{ w.ini }}</div>
+            <div>
+              <div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:19px;color:#FFB800;">{{ w.amt }}</div>
+              <div style="font-size:12px;color:#9990D6;">{{ w.town }} · {{ w.game }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+      <p style="text-align:center;font-size:12px;color:#9990D6;margin:24px 0 0;">Winners anonymised. Amounts illustrative and pending official verification.</p>
+    </div>
+  </section>
+
+  <footer id="footer" style="background:#0E0C24;color:#CFC9F2;padding:clamp(48px,7vw,72px) clamp(18px,5vw,60px) 32px;">
+    <div style="max-width:1180px;margin:0 auto;">
+      <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px;padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,.1);" data-foot-grid>
+        <div>
+          <div style="display:flex;align-items:center;gap:11px;margin-bottom:16px;">
+            <span style="width:36px;height:36px;border-radius:50%;background:radial-gradient(circle at 32% 28%, #FFE08A, #FFB800);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:700;color:#1E1B4B;">90</span>
+            <span style="font-family:'Sora',sans-serif;font-weight:800;font-size:20px;color:#fff;">Lottoman</span>
+          </div>
+          <p style="font-size:14px;line-height:1.6;color:#9990D6;max-width:300px;margin:0 0 18px;">Ghana's lucky number. A licensed NLA 5/90 marketing agent. Play the daily draws, funded by mobile money.</p>
+          <div style="display:flex;gap:10px;">
+            <sc-for list="{{ socials }}" as="s" hint-placeholder-count="4">
+              <a href="#footer" style="width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Sora',sans-serif;font-weight:700;font-size:14px;">{{ s }}</a>
+            </sc-for>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:15px;color:#fff;margin-bottom:16px;">Play</div>
+          <div style="display:flex;flex-direction:column;gap:11px;font-size:14px;">
+            <a href="#games" style="color:#9990D6;">Games</a>
+            <a href="#calculator" style="color:#9990D6;">Win Calculator</a>
+            <a href="#results" style="color:#9990D6;">Results</a>
+            <a href="#download" style="color:#9990D6;">Download App</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:15px;color:#fff;margin-bottom:16px;">Company</div>
+          <div style="display:flex;flex-direction:column;gap:11px;font-size:14px;">
+            <a href="#how" style="color:#9990D6;">How to Play</a>
+            <a href="#footer" style="color:#9990D6;">Support</a>
+            <a href="#footer" style="color:#9990D6;">Contact</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:15px;color:#fff;margin-bottom:16px;">Legal</div>
+          <div style="display:flex;flex-direction:column;gap:11px;font-size:14px;">
+            <a href="#footer" style="color:#9990D6;">Terms &amp; Conditions</a>
+            <a href="#footer" style="color:#9990D6;">Privacy Policy</a>
+            <a href="#footer" style="color:#9990D6;">Responsible Gaming</a>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding-top:24px;">
+        <div style="display:flex;align-items:center;gap:12px;font-size:13px;color:#9990D6;">
+          <span style="width:26px;height:26px;border-radius:50%;background:#FF2D78;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#fff;">18+</span>
+          You must be 18+ to play. Play responsibly — never bet more than you can afford to lose.
+        </div>
+        <div style="font-size:13px;color:#5B5580;">© 2026 Lottoman. Licensed NLA 5/90 Agent.</div>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;reduceMotion&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: false, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Motion&quot; },
+  &quot;ballCount&quot;: { &quot;editor&quot;: &quot;int&quot;, &quot;default&quot;: 7, &quot;min&quot;: 0, &quot;max&quot;: 7, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Motion&quot; }
+}">
+class Component extends DCLogic {
+  state = { now: Date.now(), betType: 'Direct 3', permCount: 4, stake: 5, payout: 0 };
+
+  GAMES = [
+    { day: 'Monday', name: 'Monday Special', idx: 1, g1: '#6D28D9', g2: '#FF2D78', tag: 'Start the week lucky' },
+    { day: 'Tuesday', name: 'Lucky Tuesday', idx: 2, g1: '#12E0B8', g2: '#6D28D9', tag: 'Midweek momentum' },
+    { day: 'Wednesday', name: 'Mid Week', idx: 3, g1: '#4338CA', g2: '#6D28D9', tag: 'Break the week open' },
+    { day: 'Thursday', name: 'Fortune Thursday', idx: 4, g1: '#FFB800', g2: '#FF2D78', tag: "Ghana's favourite draw" },
+    { day: 'Friday', name: 'Friday Bonanza', idx: 5, g1: '#FF2D78', g2: '#6D28D9', tag: 'End the week big' },
+    { day: 'Saturday', name: 'National Weekly Lotto', idx: 6, g1: '#6D28D9', g2: '#1E1B4B', tag: 'The national draw' },
+    { day: 'Sunday', name: 'Sunday Aseda', idx: 0, g1: '#FFB800', g2: '#16A34A', tag: 'Give thanks, play grateful' },
+  ];
+
+  // Indicative payout multipliers — placeholders only.
+  // TODO: confirm against official NLA payout table before launch.
+  MULT = { 'Direct 2': 240, 'Direct 3': 2100, 'Direct 4': 6000, 'Direct 5': 44000, 'Perm 2': 240, 'Banker': 240 };
+
+  componentDidMount() {
+    this.timer = setInterval(() => this.setState({ now: Date.now() }), 1000);
+    this.animateTo(this.targetFor(this.state.betType, this.state.permCount, this.state.stake));
+  }
+  componentWillUnmount() { clearInterval(this.timer); cancelAnimationFrame(this.raf); }
+
+  msUntil(idx) {
+    const now = new Date(this.state.now);
+    const t = new Date(now); t.setHours(19, 30, 0, 0);
+    let add = (idx - now.getDay() + 7) % 7;
+    if (add === 0 && t <= now) add = 7;
+    t.setDate(now.getDate() + add);
+    return t - now;
+  }
+  fmtCd(ms) {
+    const s = Math.max(0, Math.floor(ms / 1000));
+    const p = (n) => String(n).padStart(2, '0');
+    return { d: Math.floor(s / 86400), h: p(Math.floor((s % 86400) / 3600)), m: p(Math.floor((s % 3600) / 60)), s: p(s % 60) };
+  }
+  fmtGHS(n) { return 'GHS ' + Math.round(n).toLocaleString('en-US'); }
+  nCr(n, r) { if (r > n) return 0; let x = 1; for (let i = 0; i < r; i++) x = x * (n - i) / (i + 1); return Math.round(x); }
+
+  targetFor(bt, k, stake) { return stake * (this.MULT[bt] || 0); }
+  animateTo(target) {
+    cancelAnimationFrame(this.raf);
+    const start = this.state.payout || 0, t0 = performance.now(), dur = 700;
+    const step = (t) => {
+      const p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+      this.setState({ payout: Math.round(start + (target - start) * e) });
+      if (p < 1) this.raf = requestAnimationFrame(step);
+    };
+    this.raf = requestAnimationFrame(step);
+  }
+  recalc(next) {
+    const s = { ...this.state, ...next };
+    this.setState(next);
+    this.animateTo(this.targetFor(s.betType, s.permCount, s.stake));
+  }
+
+  btnStyle(active) {
+    return {
+      padding: '12px 8px', borderRadius: '12px', border: '1px solid ' + (active ? '#FF2D78' : 'rgba(255,255,255,.16)'),
+      background: active ? '#FF2D78' : 'rgba(255,255,255,.04)', color: '#fff', fontWeight: 700, fontSize: '14px',
+      fontFamily: "'Inter', sans-serif", cursor: 'pointer', transition: 'all .18s ease',
+      boxShadow: active ? '0 8px 20px rgba(255,45,120,.4)' : 'none',
+    };
+  }
+  chipStyle(active) {
+    return {
+      width: '52px', height: '48px', borderRadius: '12px', border: '1px solid ' + (active ? '#FFB800' : 'rgba(255,255,255,.16)'),
+      background: active ? 'rgba(255,184,0,.18)' : 'rgba(255,255,255,.04)', color: active ? '#FFB800' : '#fff',
+      fontFamily: "'JetBrains Mono', monospace", fontWeight: 700, fontSize: '17px', cursor: 'pointer', transition: 'all .18s ease',
+    };
+  }
+
+  buildBalls(n) {
+    const specs = [[9, 8, '#FFB800', '07'], [16, 84, '#FF2D78', '21'], [66, 12, '#12E0B8', '45'], [72, 78, '#6D28D9', '63'], [38, 92, '#FFB800', '12'], [80, 40, '#FF2D78', '88'], [30, 66, '#12E0B8', '34']];
+    const reduce = this.props.reduceMotion;
+    return specs.slice(0, Math.max(0, n)).map((s, i) => {
+      const [top, left, color, num] = s, size = 56 + (i % 3) * 12;
+      return React.createElement('div', {
+        key: i,
+        style: {
+          position: 'absolute', top: top + '%', left: left + '%', width: size, height: size, borderRadius: '50%',
+          background: 'radial-gradient(circle at 30% 25%, rgba(255,255,255,.7), ' + color + ')',
+          boxShadow: '0 12px 34px ' + color + '55, inset 0 -6px 14px rgba(0,0,0,.25)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          fontFamily: "'JetBrains Mono', monospace", fontWeight: 700, color: '#1E1B4B', fontSize: size * 0.34,
+          animation: reduce ? 'none' : ('float ' + (5 + i * 0.7) + 's ease-in-out ' + (i * 0.4) + 's infinite'),
+          opacity: 0.85, pointerEvents: 'none',
+        },
+      }, num);
+    });
+  }
+
+  renderVals() {
+    const games = this.GAMES.map((g) => ({ ...g, cd: this.fmtCd(this.msUntil(g.idx)) }));
+    const soon = this.GAMES.map((g) => ({ g, ms: this.msUntil(g.idx) })).reduce((a, b) => (a.ms < b.ms ? a : b));
+
+    const isPerm = this.state.betType.startsWith('Perm');
+    const isBanker = this.state.betType === 'Banker';
+    const betTypes = ['Direct 2', 'Direct 3', 'Direct 4', 'Direct 5', 'Perm 2', 'Banker'].map((bt) => ({
+      label: bt, onClick: () => this.recalc({ betType: bt }), style: this.btnStyle(bt === this.state.betType),
+    }));
+    const permOptions = [3, 4, 5, 6].map((k) => ({
+      label: String(k), onClick: () => this.recalc({ permCount: k }), style: this.chipStyle(k === this.state.permCount),
+    }));
+
+    let calcSub;
+    if (isPerm) {
+      const pairs = this.nCr(this.state.permCount, 2);
+      calcSub = 'Pays GHS ' + (this.state.stake * 240).toLocaleString('en-US') + ' per winning pair · ' + pairs + ' possible pairs from ' + this.state.permCount + ' numbers';
+    } else if (isBanker) {
+      calcSub = 'Banker ×240 applied per matched line on a GHS ' + this.state.stake + ' stake';
+    } else {
+      calcSub = this.state.betType + ' pays ×' + (this.MULT[this.state.betType] || 0).toLocaleString('en-US') + ' on your GHS ' + this.state.stake + ' stake';
+    }
+
+    return {
+      heroBalls: this.buildBalls(this.props.ballCount ?? 7),
+      heroDrawName: soon.g.name,
+      heroCd: this.fmtCd(soon.ms),
+      games,
+      betTypes, permOptions, isPerm,
+      stake: this.state.stake,
+      onStake: (e) => this.recalc({ stake: Math.max(1, Math.min(200, +e.target.value || 1)) }),
+      payoutDisplay: this.fmtGHS(this.state.payout),
+      calcSub,
+      steps: [
+        { n: '1', title: 'Create your account', body: 'Sign up with your phone number in under a minute. No paperwork, no queues.', bg: '#6D28D9' },
+        { n: '2', title: 'Fund with mobile money', body: 'Top up your Lottoman wallet with MTN, AirtelTigo, or Telecel. Instant and secure.', bg: '#FF2D78' },
+        { n: '3', title: 'Pick your numbers & play', body: 'Choose a draw, pick your bet type and numbers, set your stake, and confirm your ticket.', bg: '#FFB800' },
+      ],
+      results: [
+        { game: 'Fortune Thursday', date: '07 Aug 2026', nums: ['12', '45', '63', '08', '27'] },
+        { game: 'Friday Bonanza', date: '08 Aug 2026', nums: ['54', '19', '72', '03', '88'] },
+        { game: 'National Weekly Lotto', date: '09 Aug 2026', nums: ['31', '06', '49', '77', '22'] },
+        { game: 'Sunday Aseda', date: '10 Aug 2026', nums: ['09', '61', '40', '15', '83'] },
+        { game: 'Monday Special', date: '11 Aug 2026', nums: ['24', '58', '02', '67', '36'] },
+      ],
+      appBenefits: ['Play any draw in seconds', 'Wallet funded by mobile money', 'Results & draw notifications'],
+      stats: [
+        { v: 'GHS 2.4M', l: 'Paid out this month' },
+        { v: '8,300+', l: 'Winners in 2026' },
+        { v: '7', l: 'Daily draws a week' },
+      ],
+      winners: [
+        { ini: 'K.A.', town: 'Kumasi', amt: 'GHS 12,000', game: 'Fortune Thursday' },
+        { ini: 'Y.B.', town: 'Accra', amt: 'GHS 6,000', game: 'Friday Bonanza' },
+        { ini: 'E.O.', town: 'Takoradi', amt: 'GHS 2,100', game: 'Lucky Tuesday' },
+        { ini: 'A.M.', town: 'Tamale', amt: 'GHS 44,000', game: 'Mid Week' },
+      ],
+      socials: ['f', 'IG', 'YT', 'X'],
+    };
+  }
+}
+</script>
+</body>
+</html>
